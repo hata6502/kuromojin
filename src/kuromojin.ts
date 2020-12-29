@@ -37,7 +37,7 @@ export type KuromojiToken = {
     // 単語の開始位置
     word_position: number;
 };
-type KuromojiWindow = Window & {
+type KuromojiSelf = (typeof globalThis) & {
     kuromojin?: {
         dicPath?: string;
     };
@@ -51,14 +51,14 @@ const getNodeModuleDirPath = () => {
         return process.env.KUROMOJIN_DIC_PATH;
     }
     // Browser
-    // if window.kuromojin.dicPath is defined, use it as default dict path.
-    const maybeKuromojiWindow: KuromojiWindow | undefined = typeof window != "undefined" ? window : undefined;
+    // if self.kuromojin.dicPath is defined, use it as default dict path.
+    const maybeKuromojiSelf: KuromojiSelf | undefined = typeof self != "undefined" ? self : undefined;
     if (
-        typeof maybeKuromojiWindow !== "undefined" &&
-        typeof maybeKuromojiWindow.kuromojin === "object" &&
-        typeof maybeKuromojiWindow.kuromojin.dicPath === "string"
+        typeof maybeKuromojiSelf !== "undefined" &&
+        typeof maybeKuromojiSelf.kuromojin === "object" &&
+        typeof maybeKuromojiSelf.kuromojin.dicPath === "string"
     ) {
-        return maybeKuromojiWindow.kuromojin.dicPath;
+        return maybeKuromojiSelf.kuromojin.dicPath;
     }
     const kuromojiDir = path.dirname(require.resolve("kuromoji"));
     return path.join(kuromojiDir, "..", "dict");

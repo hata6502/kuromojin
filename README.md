@@ -51,12 +51,12 @@ tokenize(text).then(results => {
 
 ### For browser/global options
 
-If `window.kuromojin.dicPath` is defined, kuromojin use it as default dict path.
+If `self.kuromojin.dicPath` is defined, kuromojin use it as default dict path.
 
 ```js
 import {getTokenizer} from "kuromojin";
 // Affect all module that are used kuromojin.
-window.kuromojin = {
+self.kuromojin = {
     dicPath: "https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict"
 };
 // this `getTokenizer` function use "https://kuromojin.netlify.com/dict" 
