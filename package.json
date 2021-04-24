@@ -1,6 +1,6 @@
 {
   "name": "kuromojin",
-  "version": "2.1.5",
+  "version": "3.0.0",
   "description": "Provide a high level wrapper for kuromoji.js",
   "keywords": [
     "kuromoji",
@@ -34,7 +34,8 @@
     "netlify": "mkdir -p public && cp -r node_modules/kuromoji/dict public/"
   },
   "dependencies": {
-    "kuromoji": "0.1.1"
+    "kuromoji": "0.1.2",
+    "lru_map": "^0.4.1"
   },
   "devDependencies": {
     "@types/mocha": "^8.2.0",
